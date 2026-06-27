@@ -22,14 +22,14 @@ const __dirname = path.resolve();
 app.use(express.json({ limit: "10mb" }));
 app.use(
 	cors({
-		origin: "https://vercel-frontend-three-sage.vercel.app/",
+		origin: "https://vercel-frontend-three-sage.vercel.app",
 		credentials: true,
 	})
 );
 app.use(cookieParser());
 
-app.use(express.json({ limit: "10mb" })); // allows you to parse the body of the request
-app.use(cookieParser());
+// app.use(express.json({ limit: "10mb" })); // allows you to parse the body of the request
+// app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
