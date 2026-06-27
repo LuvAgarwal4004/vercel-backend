@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
-
+import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
 import cartRoutes from "./routes/cart.route.js";
@@ -18,6 +18,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const __dirname = path.resolve();
+
+app.use(express.json({ limit: "10mb" }));
+app.use(
+	cors({
+		origin: "https://vercel-frontend-three-sage.vercel.app/",
+		credentials: true,
+	})
+);
+app.use(cookieParser());
 
 app.use(express.json({ limit: "10mb" })); // allows you to parse the body of the request
 app.use(cookieParser());
